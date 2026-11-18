@@ -23,7 +23,7 @@ export function Img({ src, alt, eager = false, className = "" }: { src: string; 
     return () => { io.disconnect(); el.removeEventListener("load", onLoad); el.removeEventListener("error", onLoad); };
   }, [src]);
   return (
-    <img ref={ref} className={`img ${className}`} data-img={state} src={src} alt={alt} width={1440} height={900}
+    <img ref={ref} className={`img ${className}`} data-img={state} src={src} alt={alt}
       loading={eager ? "eager" : "lazy"} decoding="async" />
   );
 }

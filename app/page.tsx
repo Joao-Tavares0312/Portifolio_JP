@@ -34,16 +34,9 @@ export default function Home() {
     <>
       <section className="hero">
         <p className="hero__kicker">Varginha, MG · Brasil</p>
-        <h1 className="hero__name" aria-label={pt ? "Oi, eu sou o João Pedro, desenvolvedor de produto" : "Hi, I'm João Pedro, product developer"}>
-          <span className="hero__row" aria-hidden="true">
-            <span className="hero__out"><Split text={pt ? "Oi, eu sou o" : "Hi, I'm"} delay={100} step={28} /></span>{" "}
-            <Split text="João Pedro" delay={380} step={34} />
-          </span>
-          <span className="hero__row" aria-hidden="true">
-            <span className="hero__out"><Split text={pt ? "desenvolvedor de" : "product"} delay={700} step={28} /></span>{" "}
-            <Split text={pt ? "produto" : "developer"} delay={1100} step={30} />
-          </span>
-        </h1>
+        {/* o nome é desenhado pela malha de pixels do fundo (Field); o texto fica para leitor de tela, sem JS e movimento reduzido */}
+        <h1 className="hero__name" data-px-name=""><span>João Pedro</span></h1>
+        <p className="hero__role"><Split text={pt ? "desenvolvedor de produto" : "product developer"} delay={900} step={22} /></p>
         <p className="hero__sub">{pt ? "Trabalho na Sourei e estudo Ciência da Computação no UNIS-MG. Já publiquei quatro projetos, do banco de dados à interface." : "I work at Sourei and study Computer Science at UNIS-MG. I've shipped four projects, from the database to the interface."}</p>
         <nav className="hero__go" aria-label={pt ? "Atalhos" : "Shortcuts"}>
           <Link href="/projetos/"><MoveRight size={22} strokeWidth={1.4} aria-hidden="true" />{pt ? "ver os projetos" : "see the projects"}</Link>
@@ -59,7 +52,7 @@ export default function Home() {
         <ol className="index__list">
           {cases.map((w, k) => (
             <Reveal as="li" key={w.id} delay={k * 70}>
-              <Link href={`/projetos/${w.id}/`} onClick={projectClick(openProject, w.id)}>
+              <Link href={`/projetos/${w.id}/`} data-field={w.accent} onClick={projectClick(openProject, w.id)}>
                 <span className="index__n">0{k + 1}</span>
                 <span className="index__name">{w.name}</span>
                 <span className="index__info">

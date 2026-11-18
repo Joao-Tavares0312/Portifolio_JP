@@ -7,6 +7,7 @@ import { Arrow } from "../../components/Arrow";
 import { Split } from "../../components/Split";
 import { Techs } from "../../components/Tech";
 import { Img } from "../../components/Img";
+import { Clip } from "../../components/Clip";
 import { cases, t } from "../../content";
 
 export function CaseView({ id }: { id: string }) {
@@ -37,14 +38,18 @@ export function CaseView({ id }: { id: string }) {
           </p>
         </div>
         {w.image && (
-          <figure className="plate">
+          <figure className="plate" data-field={w.accent}>
             <a href={w.links[0].href} target="_blank" rel="noopener" tabIndex={-1}>
-              <Img src={w.image} alt={`${w.name}: ${w.line[lang]}`} eager />
+              <Clip src={w.video} poster={w.image} label={`${w.name}: ${w.line[lang]}`} />
             </a>
             <figcaption>{w.links[0].href.replace(/^https:\/\//, "").replace(/\/$/, "")}</figcaption>
           </figure>
         )}
       </div>
+      <Reveal className="shots">
+        {w.shots.map((src) => <Img key={src} src={src} alt={`${w.name}: ${lang === "pt" ? "outra tela do produto" : "another screen of the product"}`} />)}
+        <Img className="shots__m" src={w.mobile} alt={`${w.name}: ${lang === "pt" ? "versão para celular" : "mobile version"}`} />
+      </Reveal>
       <Reveal>
         <Link href={`/projetos/${next.id}/`} className="case__next">
           <span>{c.next}</span>

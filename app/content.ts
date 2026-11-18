@@ -11,6 +11,13 @@ export type Case = {
   facts?: { n: string; l: { pt: string; en: string } }[];
   stack: string[];
   image: string;
+  /** telas extras do produto no ar: duas de desktop e uma de celular */
+  shots: string[];
+  mobile: string;
+  /** gravação curta do produto no ar, sem som */
+  video: string;
+  /** cor do produto; só aparece na malha de pixels do fundo */
+  accent: string;
   links: Link[];
 };
 
@@ -39,6 +46,10 @@ export const cases: Case[] = [
     ],
     stack: ["Python", "BERTimbau", "PostgreSQL", "Supabase", "Vercel"],
     image: "/work/fraus.webp",
+    shots: ["/work/fraus-2.webp", "/work/fraus-3.webp"],
+    mobile: "/work/fraus-m.webp",
+    video: "/work/fraus.mp4",
+    accent: "#d9a441",
     links: [
       { label: site, href: "https://fraus-one.vercel.app/" },
       { label: docs, href: "https://joao-tavares0312.github.io/fraus-docs/" },
@@ -60,6 +71,10 @@ export const cases: Case[] = [
     },
     stack: ["TypeScript", "PostgreSQL", "Telegram API", "Vercel"],
     image: "/work/tars.webp",
+    shots: ["/work/tars-2.webp", "/work/tars-3.webp"],
+    mobile: "/work/tars-m.webp",
+    video: "/work/tars.mp4",
+    accent: "#58d6a6",
     links: [
       { label: site, href: "https://tars-ten-rho.vercel.app" },
       { label: docs, href: "https://joao-tavares0312.github.io/tars-docs/" },
@@ -80,6 +95,10 @@ export const cases: Case[] = [
     },
     stack: ["Next.js", "TypeScript", "Vercel"],
     image: "/work/zerobala.webp",
+    shots: ["/work/zerobala-2.webp", "/work/zerobala-3.webp"],
+    mobile: "/work/zerobala-m.webp",
+    video: "/work/zerobala.mp4",
+    accent: "#ff5a1f",
     links: [{ label: site, href: "https://zero-bala-sepia.vercel.app" }],
   },
   {
@@ -101,6 +120,10 @@ export const cases: Case[] = [
     ],
     stack: ["Arduino", "C++", "DFPlayer", "Impressão 3D"],
     image: "/work/vozautista.webp",
+    shots: ["/work/vozautista-2.webp", "/work/vozautista-3.webp"],
+    mobile: "/work/vozautista-m.webp",
+    video: "/work/vozautista.mp4",
+    accent: "#4f7dff",
     links: [
       { label: site, href: "https://vozautista.vercel.app/" },
       { label: repo, href: "https://github.com/Joao-Tavares0312/Project_auts" },

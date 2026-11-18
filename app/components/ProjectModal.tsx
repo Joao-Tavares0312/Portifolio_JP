@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
-import { X } from "lucide-react";
+import { Play, X } from "lucide-react";
 import { useLang } from "./Lang";
 import { Arrow } from "./Arrow";
 import { Techs } from "./Tech";
+import { Clip } from "./Clip";
 import { cases } from "../content";
 
 const Ctx = createContext<(id: string) => void>(() => {});
@@ -26,8 +27,10 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
   const { lang } = useLang();
   const ref = useRef<HTMLDialogElement>(null);
   const [id, setId] = useState(cases[0].id);
+  const [shot, setShot] = useState(0);
   const open = useCallback((next: string) => {
     setId(next);
+    setShot(0);
     const d = ref.current;
     if (d && !d.open) d.showModal();
     d?.scrollTo(0, 0);
@@ -42,6 +45,8 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
   const w = cases[i];
   const next = cases[(i + 1) % cases.length];
   const pt = lang === "pt";
+  const shots = [w.image, ...w.shots, w.mobile];
+  const tall = shot === shots.length - 1;
   return (
     <Ctx.Provider value={open}>
       {children}
@@ -49,10 +54,24 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
         onClick={(e) => { if (e.target === e.currentTarget) close(); }}>
         <div className="sheet__in">
           <button className="sheet__x" onClick={close} aria-label={pt ? "Fechar" : "Close"}><X size={20} aria-hidden="true" /></button>
-          <a className="sheet__media" href={w.links[0].href} target="_blank" rel="noopener">
-            <img key={w.image} src={w.image} alt={`${w.name}: ${w.line[lang]}`} width={1440} height={900} />
-            <span>{w.links[0].href.replace(/^https:\/\//, "").replace(/\/$/, "")} <Arrow /></span>
-          </a>
+          <div className="sheet__media">
+            <a className="sheet__stage" data-tall={tall} href={w.links[0].href} target="_blank" rel="noopener"
+              aria-label={`${w.name}: ${pt ? "abrir o site" : "open the site"}`}>
+              {shot === 0
+                ? <Clip key={w.video} src={w.video} poster={w.image} label={`${w.name}: ${pt ? "gravação do site em uso" : "recording of the site in use"}`} />
+                : <img key={shots[shot]} src={shots[shot]} alt={`${w.name}: ${w.line[lang]}`} />}
+            </a>
+            <div className="sheet__thumbs" role="group" aria-label={pt ? "Telas do projeto" : "Project screens"}>
+              {shots.map((src, k) => (
+                <button key={src} onClick={() => setShot(k)} aria-current={k === shot ? "true" : undefined} data-tall={k === shots.length - 1}
+                  aria-label={k === 0 ? (pt ? "Vídeo" : "Video") : `${pt ? "Tela" : "Screen"} ${k + 1}`}>
+                  <img src={src} alt="" loading="lazy" decoding="async" />
+                  {k === 0 && <Play className="sheet__play" size={16} aria-hidden="true" />}
+                </button>
+              ))}
+            </div>
+            <a className="sheet__url" href={w.links[0].href} target="_blank" rel="noopener">{w.links[0].href.replace(/^https:\/\//, "").replace(/\/$/, "")} <Arrow /></a>
+          </div>
           <div className="sheet__text">
             <p className="sheet__meta">{w.kind[lang]} · {w.year}</p>
             <h2 id="sheet-name" className="sheet__name">{w.name}</h2>

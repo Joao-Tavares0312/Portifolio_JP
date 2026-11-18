@@ -8,6 +8,7 @@ import { Split } from "../components/Split";
 import { Arrow } from "../components/Arrow";
 import { Glyph } from "../components/Glyph";
 import { Img } from "../components/Img";
+import { Clip } from "../components/Clip";
 import { Techs } from "../components/Tech";
 import { projectClick, useProject } from "../components/ProjectModal";
 import { cases, more, t } from "../content";
@@ -28,9 +29,10 @@ export default function Projects() {
       <ul className="cards">
         {cases.map((w, i) => (
           <Reveal as="li" key={w.id} delay={(i % 2) * 120}>
-            <Link className="card" href={`/projetos/${w.id}/`} onClick={projectClick(openProject, w.id)}>
+            <Link className="card" href={`/projetos/${w.id}/`} data-field={w.accent} onClick={projectClick(openProject, w.id)}>
               <span className="card__media">
                 <Img src={w.image} alt="" eager={i < 2} />
+                <Clip hover src={w.video} poster={w.image} label="" />
               </span>
               <span className="card__body">
                 <span className="card__top"><span>{w.kind[lang]}</span><span>{w.year}</span></span>
