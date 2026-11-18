@@ -222,7 +222,7 @@ export const about = {
 export const t = {
   pt: {
     nav: ["Início", "Sobre", "Experiência", "Projetos"],
-    role: "Desenvolvedor de produto",
+    role: "Programador fullstack",
     contact: "Contato",
     back: "Todos os projetos",
     next: "Próximo",
@@ -245,7 +245,7 @@ export const t = {
   },
   en: {
     nav: ["Home", "About", "Experience", "Projects"],
-    role: "Product developer",
+    role: "Full-stack developer",
     contact: "Contact",
     back: "All projects",
     next: "Next",

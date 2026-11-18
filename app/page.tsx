@@ -36,7 +36,7 @@ export default function Home() {
         <p className="hero__kicker">Varginha, MG · Brasil</p>
         {/* o nome é desenhado pela malha de pixels do fundo (Field); o texto fica para leitor de tela, sem JS e movimento reduzido */}
         <h1 className="hero__name" data-px-name=""><span>João Pedro</span></h1>
-        <p className="hero__role"><Split text={pt ? "desenvolvedor de produto" : "product developer"} delay={900} step={22} /></p>
+        <p className="hero__role"><Split text={pt ? "programador fullstack" : "full-stack developer"} delay={900} step={22} /></p>
         <p className="hero__sub">{pt ? "Trabalho na Sourei e estudo Ciência da Computação no UNIS-MG. Já publiquei quatro projetos, do banco de dados à interface." : "I work at Sourei and study Computer Science at UNIS-MG. I've shipped four projects, from the database to the interface."}</p>
         <nav className="hero__go" aria-label={pt ? "Atalhos" : "Shortcuts"}>
           <Link href="/projetos/"><MoveRight size={22} strokeWidth={1.4} aria-hidden="true" />{pt ? "ver os projetos" : "see the projects"}</Link>

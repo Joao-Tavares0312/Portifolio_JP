@@ -10,15 +10,15 @@ const body = Hanken_Grotesk({ subsets: ["latin"], variable: "--f-body" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--f-mono" });
 
 export const metadata: Metadata = {
-  title: "João Pedro | Desenvolvedor de produto",
+  title: "João Pedro | Programador fullstack",
   description:
     "Portfólio de João Pedro Tavares Vicente, desenvolvedor em Varginha, MG. Projetos: Fraus, TARS, Zero Bala e Voz Autista.",
   metadataBase: new URL("https://jpvicente.vercel.app"),
   openGraph: {
-    title: "João Pedro | Desenvolvedor de produto",
+    title: "João Pedro | Programador fullstack",
     description: "Faço o produto inteiro: banco de dados, back-end, front e deploy. Fraus, TARS, Zero Bala e Voz Autista.",
     url: "/", siteName: "João Pedro", locale: "pt_BR", type: "website",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "João Pedro, desenvolvedor de produto" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "João Pedro, programador fullstack" }],
   },
   twitter: { card: "summary_large_image", images: ["/og.png"] },
 };
