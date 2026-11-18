@@ -14,12 +14,12 @@ import { cases, t } from "./content";
 const facts = {
   pt: [
     ["Sourei", "desenvolvedor desde fev 2026"],
-    ["4 projetos", "publicados e funcionando"],
+    ["Projetos", "publicados e funcionando"],
     ["UNIS-MG", "Ciência da Computação"],
   ],
   en: [
     ["Sourei", "developer since Feb 2026"],
-    ["4 projects", "shipped and running"],
+    ["Projects", "shipped and running"],
     ["UNIS-MG", "B.Sc. Computer Science"],
   ],
 };
@@ -37,7 +37,7 @@ export default function Home() {
         {/* o nome é desenhado pela malha de pixels do fundo (Field); o texto fica para leitor de tela, sem JS e movimento reduzido */}
         <h1 className="hero__name" data-px-name=""><span>João Pedro</span></h1>
         <p className="hero__role"><Split text={pt ? "programador fullstack" : "full-stack developer"} delay={900} step={22} /></p>
-        <p className="hero__sub">{pt ? "Trabalho na Sourei e estudo Ciência da Computação no UNIS-MG. Já publiquei quatro projetos, do banco de dados à interface." : "I work at Sourei and study Computer Science at UNIS-MG. I've shipped four projects, from the database to the interface."}</p>
+        <p className="hero__sub">{pt ? "Pego o projeto do banco de dados à interface e coloco no ar. Se você precisa de alguém assim, me chama." : "I take a project from the database to the interface and put it live. If you need someone like that, get in touch."}</p>
         <nav className="hero__go" aria-label={pt ? "Atalhos" : "Shortcuts"}>
           <Link href="/projetos/"><MoveRight size={22} strokeWidth={1.4} aria-hidden="true" />{pt ? "ver os projetos" : "see the projects"}</Link>
           <Link href="/sobre/"><MoveRight size={22} strokeWidth={1.4} aria-hidden="true" />{pt ? "quem eu sou" : "about me"}</Link>
