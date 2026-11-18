@@ -66,7 +66,7 @@ export default function Home() {
                   <span className="index__line">{w.line[lang]}</span>
                   <Techs items={w.stack.slice(0, 3)} />
                 </span>
-                <span className="index__meta">{w.kind[lang]}<br />{w.year}</span>
+                <span className="index__meta"><span>{w.kind[lang]}</span><span>{w.year}</span></span>
                 <Plus className="index__plus" size={28} strokeWidth={1.3} aria-hidden="true" />
               </Link>
             </Reveal>
